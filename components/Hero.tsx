@@ -3,32 +3,48 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <div className="relative py-24 overflow-hidden bg-zinc-950">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-red-600 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
-        <div className="absolute top-0 right-10 w-96 h-96 bg-rose-900 rounded-full mix-blend-screen filter blur-[120px] animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-10 left-1/2 w-96 h-96 bg-red-800 rounded-full mix-blend-screen filter blur-[120px] animate-blob animation-delay-4000"></div>
-      </div>
-      
+    <div className="relative py-32 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 text-center">
-        <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-red-500 uppercase bg-red-950/30 border border-red-900/50 rounded-full">
-          Cộng đồng MMO Pro
-        </span>
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
-          Hành trình tự do <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-rose-400">Tài chính Online</span>
+        <div className="inline-flex items-center gap-3 px-6 py-2.5 mb-10 text-[10px] font-black tracking-[0.3em] text-red-500 uppercase liquid-glass-red rounded-full border border-red-900/40">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600 shadow-[0_0_10px_rgba(220,38,38,1)]"></span>
+          </span>
+          System Online: 50K Active Nodes
+        </div>
+        
+        <h1 className="text-7xl md:text-9xl font-[950] text-white mb-10 leading-[0.85] tracking-tighter">
+          ĐẾ CHẾ <br />
+          <span className="shimmer-text blood-text-glow italic">
+            MMO LỎNG
+          </span>
         </h1>
-        <p className="max-w-2xl mx-auto text-lg text-zinc-400 mb-10 leading-relaxed">
-          Chia sẻ lộ trình thực chiến từ Affiliate, Dropshipping đến Crypto. 
-          Hợp tác cùng Trợ lý AI để tối ưu hóa dòng tiền của bạn.
+        
+        <p className="max-w-2xl mx-auto text-xl text-zinc-400 mb-14 leading-relaxed font-semibold italic">
+          "Trong thế giới Digital, kẻ linh hoạt như chất lỏng mới có thể chảy vào những ngách hẹp nhất của dòng tiền."
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="w-full sm:w-auto px-8 py-4 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition shadow-2xl shadow-red-900/40">
-            Xem lộ trình Miễn phí
+        
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+          <button className="w-full sm:w-auto px-12 py-5 bg-red-800 text-white font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-red-700 transition glow-button shimmer-btn text-xs">
+            Bẻ khóa lộ trình
           </button>
-          <button className="w-full sm:w-auto px-8 py-4 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition border border-zinc-800">
-            Hỏi Trợ lý AI
+          <button className="w-full sm:w-auto px-12 py-5 liquid-glass text-white font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-zinc-800 transition border border-white/10 text-xs">
+            Hỏi ý kiến AI
           </button>
+        </div>
+        
+        <div className="mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto border-t border-white/5 pt-16">
+          {[
+            { label: 'AGENT AI', val: '24/7' },
+            { label: 'NGÁCH HOT', val: '120+' },
+            { label: 'LỢI NHUẬN', val: '∞' },
+            { label: 'U TRÌNH', val: 'PRO' },
+          ].map((s, i) => (
+            <div key={i} className="text-center group">
+              <div className="text-4xl font-[900] text-white mb-2 group-hover:text-red-600 transition-colors duration-500">{s.val}</div>
+              <div className="text-[9px] font-bold text-zinc-500 tracking-[0.4em] uppercase">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

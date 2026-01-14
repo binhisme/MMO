@@ -4,24 +4,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MMO Hub - Kiến Thức Kiếm Tiền Online</title>
+  <title>MMO Hub - Liquid Glass Edition</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .glass { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); }
+    :root {
+      --blood-red: #8b0000;
+      --blood-red-bright: #ff0000;
+      --blood-red-glow: rgba(139, 0, 0, 0.5);
+    }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background-color: #020202;
+      overflow-x: hidden;
+    }
+
+    /* Hiệu ứng Liquid Glass */
+    .liquid-glass {
+      background: rgba(15, 15, 15, 0.4);
+      backdrop-filter: blur(30px) saturate(200%);
+      -webkit-backdrop-filter: blur(30px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    }
+
+    .liquid-glass-red {
+      background: rgba(139, 0, 0, 0.05);
+      backdrop-filter: blur(25px) saturate(150%);
+      border: 1px solid rgba(139, 0, 0, 0.2);
+    }
+
+    /* Thẻ bài viết kiểu kính lỏng */
+    .glass-card {
+      background: rgba(20, 20, 20, 0.3);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-card:hover {
+      background: rgba(40, 40, 40, 0.4);
+      border-color: rgba(139, 0, 0, 0.6);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--blood-red-glow);
+    }
+
+    /* SHIMMER EFFECT FOR BUTTONS */
+    .shimmer-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-btn::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.1),
+        transparent
+      );
+      transform: rotate(45deg);
+      animation: buttonShimmer 3s infinite;
+    }
+    @keyframes buttonShimmer {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    /* SHIMMER EFFECT FOR RED TEXT */
+    .shimmer-text {
+      background: linear-gradient(
+        90deg, 
+        var(--blood-red) 0%, 
+        var(--blood-red-bright) 25%, 
+        #ffffff 50%, 
+        var(--blood-red-bright) 75%, 
+        var(--blood-red) 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textShimmer 4s linear infinite;
+    }
+    @keyframes textShimmer {
+      to { background-position: 200% center; }
+    }
+
+    /* Nền Liquid trôi chảy */
+    .liquid-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: -1;
+      filter: blur(80px);
+      opacity: 0.4;
+    }
+    .blob {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--blood-red) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: move 20s infinite alternate;
+    }
+    @keyframes move {
+      from { transform: translate(-10%, -10%) rotate(0deg); }
+      to { transform: translate(20%, 20%) rotate(360deg); }
+    }
+
+    .blood-text-glow {
+      text-shadow: 0 0 20px rgba(220, 38, 38, 0.8), 0 0 40px rgba(139, 0, 0, 0.4);
+    }
+    
+    .glow-button {
+      background: linear-gradient(135deg, #8b0000 0%, #450a0a 100%);
+      box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+    }
+    .glow-button:hover {
+      box-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
+      transform: scale(1.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    
-    @keyframes blob {
-      0% { transform: translate(0px, 0px) scale(1); }
-      33% { transform: translate(30px, -50px) scale(1.1); }
-      66% { transform: translate(-20px, 20px) scale(0.9); }
-      100% { transform: translate(0px, 0px) scale(1); }
-    }
-    .animate-blob { animation: blob 7s infinite; }
-    .animation-delay-2000 { animation-delay: 2s; }
-    .animation-delay-4000 { animation-delay: 4s; }
   </style>
 <script type="importmap">
 {
@@ -34,7 +147,13 @@
 }
 </script>
 </head>
-<body class="bg-zinc-950 text-zinc-100">
+<body class="bg-[#020202] text-zinc-100">
+  <!-- Liquid Background Layers -->
+  <div class="liquid-bg">
+    <div class="blob" style="top: -10%; left: -10%; background: radial-gradient(circle, #450a0a 0%, transparent 70%);"></div>
+    <div class="blob" style="bottom: -10%; right: -10%; animation-duration: 25s; background: radial-gradient(circle, #8b0000 0%, transparent 70%);"></div>
+    <div class="blob" style="top: 40%; left: 30%; animation-duration: 30s; opacity: 0.5;"></div>
+  </div>
   <div id="root"></div>
 </body>
 </html>
