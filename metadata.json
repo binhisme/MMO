@@ -1,0 +1,8 @@
+{
+  "name": "MMO Hub - Kiến Thức Kiếm Tiền Online",
+  "description": "Nền tảng chia sẻ kiến thức, kinh nghiệm và công cụ hỗ trợ kiếm tiền online (MMO) với trợ lý AI thông minh.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
