@@ -17,6 +17,7 @@
       font-family: 'Inter', sans-serif; 
       background-color: #020202;
       overflow-x: hidden;
+      margin: 0;
     }
 
     /* Hiệu ứng Liquid Glass */
@@ -136,6 +137,10 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
+  <script>
+    // Khởi tạo process.env nếu nó chưa tồn tại để tránh lỗi ứng dụng khi load ESM
+    window.process = window.process || { env: {} };
+  </script>
 <script type="importmap">
 {
   "imports": {
@@ -154,6 +159,10 @@
     <div class="blob" style="bottom: -10%; right: -10%; animation-duration: 25s; background: radial-gradient(circle, #8b0000 0%, transparent 70%);"></div>
     <div class="blob" style="top: 40%; left: 30%; animation-duration: 30s; opacity: 0.5;"></div>
   </div>
+  
   <div id="root"></div>
+
+  <!-- Đây là dòng quan trọng nhất để khởi chạy ứng dụng -->
+  <script type="module" src="index.tsx"></script>
 </body>
 </html>
